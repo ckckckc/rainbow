@@ -15,7 +15,6 @@
   opacity:0;
 }
 
-
 #type-error.animating{
   display: block;
   animation:        showError 4s linear 0s 1 normal forwards;

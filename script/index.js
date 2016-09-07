@@ -10,6 +10,8 @@
         {"name" : "downloadImage", "selector" : "download-image"},
         {"name" : "downloadLink", "selector" : "download-link"},
         {"name" : "closeModal", "selector" : "close-modal"},
+        {"name" : "typeError", "selector" : "type-error"},
+
       ];
 
   var isDonwloadAvailable = "download" in document.createElement("a");;
@@ -29,11 +31,20 @@
 
     if (!imageType.test(file.type)) {
       revokeCurrentFile();
-      RS.error.showUploadTypeError();
+      
+      showTypeError();
       return;
     }
 
     drawFileToCanvas(file);
+  }
+
+  function showTypeError() {
+    doms.typeError.classList.add("animating");
+
+    setTimeout(function(){
+      doms.typeError.classList.remove("animating");
+    }, 4000);
   }
 
   function drawFileToCanvas(file) {
