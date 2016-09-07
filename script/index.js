@@ -114,7 +114,7 @@
 
     fullSizeRainbow.ctx.drawImage(img, 0, 0, naturalWidth, naturalHeight);
 
-    fullSizeRainbow.applyRainbow();
+    fullSizeRainbow.applyRainbow(false);
 
     fullSizeRainbow.can.toBlob(function(blob){
       var imageURL = URL.createObjectURL(blob);

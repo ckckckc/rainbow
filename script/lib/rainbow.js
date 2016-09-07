@@ -18,7 +18,28 @@
     this.RGB;
 
     this.RGBLength;
+
+    this.devicePixelRatio = window.devicePixelRatio || 1;
+
+    this.backingStoreRatio = this.ctx.webkitBackingStorePixelRatio ||
+                             this.ctx.mozBackingStorePixelRatio ||
+                             this.ctx.msBackingStorePixelRatio ||
+                             this.ctx.oBackingStorePixelRatio ||
+                             this.ctx.backingStorePixelRatio || 1;
+
+    this.ratio = this.devicePixelRatio / this.backingStoreRatio;
+
+    this.autoScaled = false;
   };
+
+  Rainbow.prototype.rainbowSteps = [
+    'rgba(227,  27,   0, 0.5)',
+    'rgba(255, 142,   0, 0.5)',
+    'rgba(255, 236,   0, 0.5)',
+    'rgba( 20, 127,  28, 0.5)',
+    'rgba(  0,  80, 255, 0.5)',
+    'rgba(115,  18, 138, 0.5)'
+  ];
 
   Rainbow.prototype.setImageSmoothingEnabled = function(boolean) {
     this.ctx.imageSmoothingEnabled    = boolean;
@@ -58,21 +79,13 @@
         desh = opts.desh || srch,
         mode = opts.mode || 2,
         auto = opts.auto,
-
-        devicePixelRatio  = window.devicePixelRatio || 1,
-        backingStoreRatio = context.webkitBackingStorePixelRatio ||
-                            context.mozBackingStorePixelRatio ||
-                            context.msBackingStorePixelRatio ||
-                            context.oBackingStorePixelRatio ||
-                            context.backingStorePixelRatio || 1,
-
-        ratio = devicePixelRatio / backingStoreRatio;
+        ratio = this.ratio;
 
     if (typeof auto === 'undefined') {
-      auto = true;
+      this.autoScaled = true;
     }
 
-    if (auto && devicePixelRatio !== backingStoreRatio) {
+    if (this.autoScaled && this.devicePixelRatio !== this.backingStoreRatio) {
 
       var oldWidth = canvas.width;
       var oldHeight = canvas.height;
@@ -120,7 +133,59 @@
     };
   };
 
-  Rainbow.prototype.applyRainbow = function() {};
+  Rainbow.prototype.resizeByDevice = function() {
+    if (this.devicePixelRatio !== this.backingStoreRatio) {
+
+      var can = this.can;
+      var oldWidth = can.width;
+      var oldHeight = can.height;
+
+      can.width = oldWidth * ratio;
+      can.height = oldHeight * ratio;
+
+      can.style.width = oldWidth + 'px';
+      can.style.height = oldHeight + 'px';
+
+      this.ctx.scale(ratio, ratio);
+    }
+  };
+
+  Rainbow.prototype.restoreByDevice = function() {
+    if (this.devicePixelRatio !== this.backingStoreRatio) {
+
+      var can = this.can;
+      var oldWidth = can.width;
+      var oldHeight = can.height;
+
+      can.width = oldWidth / ratio;
+      can.height = oldHeight / ratio;
+
+      can.style.width = 'auto';
+      can.style.height = 'auto';
+
+      this.ctx.scale(1 / ratio, 1 / ratio);
+    }
+  };
+
+  Rainbow.prototype.applyRainbow = function() {
+    var ctx = this.ctx,
+        width = this.can.width,
+        height = this.can.height,
+        rainbowSteps = Rainbow.prototype.rainbowSteps
+        len = rainbowSteps.length,
+        pieceHeight = Math.round(height/len),
+        ratio = this.ratio;
+
+    ctx.save();
+
+    for (var i = 0 ; i < len ; i++ ) {
+      var deltaY = this.autoScaled ? pieceHeight / ratio : pieceHeight;
+      ctx.fillStyle = rainbowSteps[i];
+      ctx.fillRect(0, i * deltaY, width, pieceHeight);
+    }
+
+    ctx.restore();
+  };
 
 
 })();
