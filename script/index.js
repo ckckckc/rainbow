@@ -141,7 +141,7 @@
 
         doms.downloadLink.download  = "Rainbow" + "." + downloadInfo.extension;
       } else {
-        doms.downloadLink.onclick = openDownloadModal;
+        doms.btnDownload.onclick = openDownloadModal;
       }
 
       css.display(doms.btnDownload, "block");
@@ -149,7 +149,7 @@
   }
 
   function openDownloadModal() {
-    if (doms.downloadLink.href) css.display(doms.modalBackground, "block");
+    css.display(doms.modalBackground, "block");
   }
 
   function closeDownloadModal() {
