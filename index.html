@@ -3,8 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Rainbow</title>
+<link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-<canvas id="rainbow"></canvas>
+<h1>Rainbow filter effect</h1>
+
+<section id="rainbow-container">
+  <canvas id="rainbow" width="550" height="550" class="block-center"></canvas>
+</section>
+
+<button id="btn-upload">Upload Image</button>
+
+<input type="file" id="file" class="none">
+
+<script src="./script/lib/config.js"></script>
+<script src="./script/lib/dom.js"></script>
+<script src="./script/lib/error.js"></script>
+<script src="./script/lib/rainbow.js"></script>
+
+<script src="./script/index.js"></script>
 </body>
 </html>

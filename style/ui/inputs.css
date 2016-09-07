@@ -1,0 +1,23 @@
+#btn-upload{
+  position: relative;
+  font-size: 20px;
+  display: block;
+  width: 220px;
+  height: 55px;
+  border: 3px solid #000;
+  margin: 20px auto;
+  background-color: #fff;
+  outline: none;
+
+  cursor: pointer;
+
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+}
+
+#btn-upload:hover{
+  background-color: #000;
+  color: #fff;
+}

@@ -1,0 +1,23 @@
+#type-error{
+  text-align: center;
+  position:fixed;
+  bottom:3%;
+  right:3%;
+  display: none;
+  font-size:16px;
+  width:180px;
+  height:45px;
+  line-height:45px;
+
+  color:#fff;
+  background-color:#d07878;
+
+  opacity:0;
+}
+
+
+#type-error.animating{
+  display: block;
+  animation:        showError 4s linear 0s 1 normal forwards;
+  -webkit-animation:showError 4s linear 0s 1 normal forwards;
+}

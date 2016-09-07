@@ -1,0 +1,36 @@
+@import url(./animation/error.css);
+
+@import url(./feature/reset.css);
+
+@import url(./feature/error.css);
+
+@import url(./feature/template.css);
+
+@import url(./ui/inputs.css);
+
+html, body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    font-family:sans-serif;
+}
+
+h1{
+  font-size: 42px;
+  padding: 20px;
+  text-align: center;
+}
+
+#rainbow-container{
+  min-height: 450px;
+  height: auto;
+  position: relative;
+  background-color: #eee;
+}
+
+#rainbow{
+  display: block;
+  margin: 0px auto;
+}
