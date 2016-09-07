@@ -2,6 +2,7 @@
   var RS, Rainbow, doms = {}, fullSizeRainbow, css,
       elementList = [
         {"name" : "can", "selector" : "rainbow"},
+        {"name" : "rainbowContainer", "selector" : "rainbow-container"},
         {"name" : "btnUpload", "selector" : "btn-upload"},
         {"name" : "file", "selector" : "file"},
         {"name" : "btnDownload", "selector" : "btn-download"},
@@ -133,7 +134,7 @@
   }
 
   function openDownloadModal() {
-    css.display(doms.modalBackground, "block");
+    if (doms.downloadLink.href) css.display(doms.modalBackground, "block");
   }
 
   function closeDownloadModal() {
@@ -156,6 +157,8 @@
     doms.file.addEventListener("change", checkFile, false);
 
     doms.closeModal.addEventListener("click", closeDownloadModal, false);
+
+    doms.can.addEventListener("click", openDownloadModal, false);
   });
 
 })();
