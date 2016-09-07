@@ -1,0 +1,26 @@
+.download-figure{
+  max-height: 85%;
+  margin: 2% auto 0px auto;
+  overflow: auto;
+}
+
+.download-figure img{
+  display: block;
+  margin: 0% auto;
+}
+
+.modal-download-tips{
+  display: block;
+  height: 30px;
+  text-align: center;
+  font-family: monospace;
+  font-size: 2em;
+  font-weight: bold;
+  color: #fff;
+  margin: 5% auto 2% auto;
+}
+
+.modal-download-tips span{
+  font-size: 1.2em;
+  color: #7fffd4;
+}

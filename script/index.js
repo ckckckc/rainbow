@@ -1,10 +1,17 @@
 (function(){
-  var RS, Rainbow, doms = {}, donwloadRainbow,
+  var RS, Rainbow, doms = {}, fullSizeRainbow, css,
       elementList = [
         {"name" : "can", "selector" : "rainbow"},
-        {"name" : "uploadBtn", "selector" : "btn-upload"},
+        {"name" : "btnUpload", "selector" : "btn-upload"},
         {"name" : "file", "selector" : "file"},
+        {"name" : "btnDownload", "selector" : "btn-download"},
+        {"name" : "modalBackground", "selector" : "modal-background"},
+        {"name" : "downloadImage", "selector" : "download-image"},
+        {"name" : "downloadLink", "selector" : "download-link"},
+        {"name" : "closeModal", "selector" : "close-modal"},
       ];
+
+  var isDonwloadAvailable = "download" in document.createElement("a");;
   var URL = window.URL = window.URL || window.webkitURL;
 
   function uploadFile() {
@@ -14,14 +21,14 @@
   function checkFile() {
     var file,
         imageType = /^image\//;
-console.log(event.target.files);
+
     if (event.target.files.length == 0) return;
 
     file = event.target.files[0];
 
     if (!imageType.test(file.type)) {
+      revokeCurrentFile();
       RS.error.showUploadTypeError();
-      doms.file.value = null;
       return;
     }
 
@@ -48,6 +55,8 @@ console.log(event.target.files);
 
       Rainbow.resizeCanvas(resizeSize);
 
+      Rainbow.setImage(img);
+
       Rainbow.drawImage({
         "image" : img,
         "srcx"  : 0,
@@ -59,17 +68,19 @@ console.log(event.target.files);
 
       Rainbow.applyRainbow();
 
-      clearFile(file);
+      revokeCurrentFile();
 
       revokeURL(img.src);
+
+      downloadInit();
 
     }.bind(img, file);
 
     img.src = src;
   }
 
-  function clearFile(file) {
-    console.log(file);
+  function revokeCurrentFile() {
+    doms.file.value = null;
   }
 
   function revokeURL(url) {
@@ -82,26 +93,69 @@ console.log(event.target.files);
     Rainbow.setImageSmoothingEnabled(false);
   }
 
+  function fullSizeRainbowInit() {
+    fullSizeRainbow = new RS.Rainbow(document.createElement("canvas"));
+
+    fullSizeRainbow.setImageSmoothingEnabled(false);
+  }
+
   function downloadInit() {
-    doms.donwloadCanvas = document.createElement("canvas");
+    var imageType,
+        img  = Rainbow.getImage(),
+        naturalWidth  = img.naturalWidth,
+        naturalHeight = img.naturalHeight,
+        downloadInfo = {"quality" : 0.92, "mime" : "image/jpeg", "extension" : "jpeg"};
 
-    donwloadRainbow = new RS.Rainbow(doms.donwloadCanvas);
+    fullSizeRainbow.resizeCanvas({
+      "width"  : naturalWidth,
+      "height" : naturalHeight
+    });
 
-    donwloadRainbow.setImageSmoothingEnabled(false);
+    fullSizeRainbow.ctx.drawImage(img, 0, 0, naturalWidth, naturalHeight);
+
+    fullSizeRainbow.applyRainbow();
+
+    fullSizeRainbow.can.toBlob(function(blob){
+      var imageURL = URL.createObjectURL(blob);
+
+      doms.downloadImage.src = imageURL;
+
+      if (isDonwloadAvailable) {
+        doms.downloadLink.href = imageURL;
+
+        doms.downloadLink.download  = "Rainbow" + "." + downloadInfo.extension;
+      } else {
+        doms.downloadLink.onclick = openDownloadModal;
+      }
+
+      css.display(doms.btnDownload, "block");
+    }, downloadInfo.mime, downloadInfo.quality);
+  }
+
+  function openDownloadModal() {
+    css.display(doms.modalBackground, "block");
+  }
+
+  function closeDownloadModal() {
+    css.display(doms.modalBackground, "none");
   }
 
   document.addEventListener("DOMContentLoaded", function(){
     RS = window.RS;
 
+    css = RS.css;
+
     RS.bindElements(elementList, doms);
 
     rainbowInit();
 
-    downloadInit();
+    fullSizeRainbowInit();
 
-    doms.uploadBtn.addEventListener("click", uploadFile, false);
+    doms.btnUpload.addEventListener("click", uploadFile, false);
 
     doms.file.addEventListener("change", checkFile, false);
+
+    doms.closeModal.addEventListener("click", closeDownloadModal, false);
   });
 
 })();

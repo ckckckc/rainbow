@@ -32,6 +32,14 @@
     this.can.height = size.height;
   };
 
+  Rainbow.prototype.setImage = function(image) {
+    this.image = image;
+  };
+
+  Rainbow.prototype.getImage = function() {
+    return this.image;
+  }
+
   Rainbow.prototype.drawImage = function drawImage(opts) {
 
     if(!opts.image) throw("target is required");
