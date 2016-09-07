@@ -10,16 +10,75 @@
   outline: none;
 
   cursor: pointer;
-
-  transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
 }
 
 #btn-upload:hover{
-  background-color: #000;
   color: #fff;
+  border-color: #fff;
+
+  background-image: 
+    linear-gradient(
+      to bottom, 
+      rgba(227,  27,   0, 0.5) 0%,
+      rgba(227,  27,   0, 0.5) 16.5%,
+      rgba(255, 142,   0, 0.5) 16.6%,
+      rgba(255, 142,   0, 0.5) 33.3%,
+      rgba(255, 236,   0, 0.5) 50%,
+      rgba(255, 236,   0, 0.5) 50.1%,
+      rgba( 20, 127,  28, 0.5) 66.6%,
+      rgba(  0,  80, 255, 0.5) 66.7%,
+      rgba(  0,  80, 255, 0.5) 83.3%,
+      rgba(115,  18, 138, 0.5) 83.4%,
+      rgba(115,  18, 138, 0.5) 100%
+  );
+
+  background-image: 
+    -webkit-linear-gradient(
+      to bottom, 
+      rgba(227,  27,   0, 0.5) 0%,
+      rgba(227,  27,   0, 0.5) 16.5%,
+      rgba(255, 142,   0, 0.5) 16.6%,
+      rgba(255, 142,   0, 0.5) 33.3%,
+      rgba(255, 236,   0, 0.5) 50%,
+      rgba(255, 236,   0, 0.5) 50.1%,
+      rgba( 20, 127,  28, 0.5) 66.6%,
+      rgba(  0,  80, 255, 0.5) 66.7%,
+      rgba(  0,  80, 255, 0.5) 83.3%,
+      rgba(115,  18, 138, 0.5) 83.4%,
+      rgba(115,  18, 138, 0.5) 100%
+  );
+
+  background-image: 
+    -o-linear-gradient(
+      to bottom, 
+      rgba(227,  27,   0, 0.5) 0%,
+      rgba(227,  27,   0, 0.5) 16.5%,
+      rgba(255, 142,   0, 0.5) 16.6%,
+      rgba(255, 142,   0, 0.5) 33.3%,
+      rgba(255, 236,   0, 0.5) 50%,
+      rgba(255, 236,   0, 0.5) 50.1%,
+      rgba( 20, 127,  28, 0.5) 66.6%,
+      rgba(  0,  80, 255, 0.5) 66.7%,
+      rgba(  0,  80, 255, 0.5) 83.3%,
+      rgba(115,  18, 138, 0.5) 83.4%,
+      rgba(115,  18, 138, 0.5) 100%
+  );
+
+  background-image: 
+    -moz-linear-gradient(
+      to bottom, 
+      rgba(227,  27,   0, 0.5) 0%,
+      rgba(227,  27,   0, 0.5) 16.5%,
+      rgba(255, 142,   0, 0.5) 16.6%,
+      rgba(255, 142,   0, 0.5) 33.3%,
+      rgba(255, 236,   0, 0.5) 50%,
+      rgba(255, 236,   0, 0.5) 50.1%,
+      rgba( 20, 127,  28, 0.5) 66.6%,
+      rgba(  0,  80, 255, 0.5) 66.7%,
+      rgba(  0,  80, 255, 0.5) 83.3%,
+      rgba(115,  18, 138, 0.5) 83.4%,
+      rgba(115,  18, 138, 0.5) 100%
+  );
 }
 
 #btn-download{
@@ -31,6 +90,11 @@
   color: #fff;
   border-color: transparent;
   background-color: #00aa00;
+
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
 }
 
 

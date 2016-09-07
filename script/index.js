@@ -73,6 +73,8 @@
 
       revokeURL(img.src);
 
+      css.display(doms.can, "block");
+
       downloadInit();
 
     }.bind(img, file);

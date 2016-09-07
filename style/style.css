@@ -34,12 +34,12 @@ h1{
   min-height: 450px;
   padding: 10px 0;
   background-color: #eee;
-  cursor: pointer;
 }
 
 #rainbow{
-  display: block;
+  display: none;
   margin: 0px auto;
+  cursor: pointer;
 }
 
 #download-link{
