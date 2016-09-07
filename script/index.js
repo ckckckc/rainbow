@@ -49,7 +49,9 @@
             "height"   : img.height, 
             "gradient" : img.height / img.width
           },
-          resizeSize = RS.Rainbow.prototype.getResizeSize(imageSize, RS.config.defaultSize);
+          resizeSize = RS.Rainbow
+                         .prototype
+                         .getResizeSize(imageSize, RS.config.defaultSize);
 
       img.width = resizeSize.width;
       img.height = resizeSize.height;

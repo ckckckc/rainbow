@@ -78,10 +78,11 @@
         desw = opts.desw || srcw,
         desh = opts.desh || srch,
         mode = opts.mode || 2,
-        auto = opts.auto,
         ratio = this.ratio;
 
-    if (typeof auto === 'undefined') {
+    this.autoScaled = opts.auto
+
+    if (typeof this.autoScaled === 'undefined') {
       this.autoScaled = true;
     }
 
