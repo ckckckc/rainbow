@@ -11,7 +11,6 @@
         {"name" : "downloadLink", "selector" : "download-link"},
         {"name" : "closeModal", "selector" : "close-modal"},
         {"name" : "typeError", "selector" : "type-error"},
-
       ];
 
   var isDonwloadAvailable = "download" in document.createElement("a");;
@@ -129,7 +128,7 @@
 
     fullSizeRainbow.ctx.drawImage(img, 0, 0, naturalWidth, naturalHeight);
 
-    fullSizeRainbow.applyRainbow(false);
+    fullSizeRainbow.applyRainbow();
 
     fullSizeRainbow.can.toBlob(function(blob){
       var imageURL = URL.createObjectURL(blob);
