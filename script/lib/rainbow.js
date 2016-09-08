@@ -33,12 +33,12 @@
   };
 
   Rainbow.prototype.rainbowSteps = [
-    'rgba(227,  27,   0, 0.5)',
-    'rgba(255, 142,   0, 0.5)',
-    'rgba(255, 236,   0, 0.5)',
-    'rgba( 20, 127,  28, 0.5)',
-    'rgba(  0,  80, 255, 0.5)',
-    'rgba(115,  18, 138, 0.5)'
+    'rgba(227,  27,   0, 0.3)',
+    'rgba(255, 142,   0, 0.3)',
+    'rgba(255, 236,   0, 0.3)',
+    'rgba( 20, 127,  28, 0.3)',
+    'rgba(  0,  80, 255, 0.3)',
+    'rgba(115,  18, 138, 0.3)'
   ];
 
   Rainbow.prototype.setImageSmoothingEnabled = function(boolean) {
