@@ -31,6 +31,8 @@
         existVarNames.push(elementList[i].name);
         continue;
       }
+
+      throw new Error("must specify correct method for binding element(id, qs, qsa).");
     }
   };
 

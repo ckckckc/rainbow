@@ -11,6 +11,7 @@
         {"name" : "downloadLink", "selector" : "download-link"},
         {"name" : "closeModal", "selector" : "close-modal"},
         {"name" : "typeError", "selector" : "type-error"},
+        {"name" : "aaa", "method" : "abc", "selector" : "type"},
       ];
 
   var isDonwloadAvailable = "download" in document.createElement("a");;
